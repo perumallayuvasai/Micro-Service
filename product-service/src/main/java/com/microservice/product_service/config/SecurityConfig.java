@@ -42,7 +42,7 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth
 				// Swagger UI endpoints should be public
-				.requestMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/api-docs/**", "/webjars/**")
+				.requestMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/api-docs/**", "/webjars/**","/products/**")
 				.permitAll()
 				// everything else requires authentication
 				.anyRequest().authenticated()).httpBasic(Customizer.withDefaults()); // basic auth for APIs

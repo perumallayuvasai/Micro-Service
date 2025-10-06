@@ -39,4 +39,10 @@ public class OrderService {
 		}
 		orderRepository.deleteById(id);
 	}
+
+	// Create order
+	public Order createOrder(Order orderRequest) {
+		return orderRepository.save(orderRequest);
+	}
+
 }

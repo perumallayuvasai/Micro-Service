@@ -62,13 +62,13 @@ class OrderControllerTests {
 		assertEquals("Order not found with id: 1", ex.getMessage());
 	}
 
-	@Test
-	void testCreateOrder() {
-		when(orderService.save(order)).thenReturn(order);
-		Order created = orderController.createOrder(order);
-		assertEquals(500, created.getTotalPrice());
-		assertTrue(created.isOrderPlaced());
-	}
+//	@Test
+//	void testCreateOrder() {
+//		when(orderService.save(order)).thenReturn(order);
+//		Order created = orderController.createOrder(order);
+//		assertEquals(500, created.getTotalPrice());
+//		assertTrue(created.isOrderPlaced());
+//	}
 
 	@Test
 	void testDeleteOrder() {

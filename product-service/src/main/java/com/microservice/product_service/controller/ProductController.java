@@ -2,8 +2,10 @@ package com.microservice.product_service.controller;
 
 import com.microservice.product_service.entity.Product;
 import com.microservice.product_service.exception.ProductException;
+import com.microservice.product_service.repository.ProductRepository;
 import com.microservice.product_service.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,4 +49,22 @@ public class ProductController {
 		productService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
+
+	// Reduce quantity (customer placing an order)
+	@PutMapping("/{productId}/reduceQuantity")
+	public ResponseEntity<?> reduceQuantity(@PathVariable Long productId, @RequestParam int quantity,
+			@RequestParam Long userId) {
+		try {
+			Product updatedProduct = productService.reduceQuantity(productId, quantity, userId);
+			return ResponseEntity.ok(updatedProduct);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+		} catch (SecurityException e) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body("Error while reducing quantity: " + e.getMessage());
+		}
+	}
+
 }
