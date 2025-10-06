@@ -2,7 +2,6 @@ package com.microservice.product_service.controller;
 
 import com.microservice.product_service.entity.Product;
 import com.microservice.product_service.exception.ProductException;
-import com.microservice.product_service.repository.ProductRepository;
 import com.microservice.product_service.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

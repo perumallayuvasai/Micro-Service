@@ -1,27 +1,3 @@
-//package com.microservice.product_service.config;
-//
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.web.SecurityFilterChain;
-//
-//@Configuration
-//public class SecurityConfig {
-//
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//            .authorizeHttpRequests(auth -> auth
-//                .requestMatchers("/products", "/products/**, /swagger-ui/**").permitAll()
-//                .requestMatchers("/products").hasRole("ADMIN")            // restrict POST
-//                .requestMatchers("/products/**").hasRole("ADMIN")         // restrict DELETE
-//                .anyRequest().authenticated()
-//            )
-//            .httpBasic(); // basic auth
-//        return http.build();
-//    }
-//}
-
 package com.microservice.product_service.config;
 
 import org.springframework.context.annotation.Bean;
